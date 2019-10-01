@@ -31,6 +31,7 @@ import com.doolri1276.imagepicker.helper.ConfigUtils;
 import com.doolri1276.imagepicker.helper.ImagePickerPreferences;
 import com.doolri1276.imagepicker.helper.IpCrasher;
 import com.doolri1276.imagepicker.helper.IpLogger;
+import com.doolri1276.imagepicker.helper.StringUtils;
 import com.doolri1276.imagepicker.model.Folder;
 import com.doolri1276.imagepicker.model.Image;
 import com.doolri1276.imagepicker.view.SnackBarView;
@@ -177,6 +178,7 @@ public class ImagePickerFragment extends Fragment implements ImagePickerView {
     private void setupView(View rootView) {
         progressBar = rootView.findViewById(R.id.progress_bar);
         emptyTextView = rootView.findViewById(R.id.tv_empty_images);
+        emptyTextView.setText(StringUtils.getINSTANCE().getMsgEmptyImages(getContext()));
         recyclerView = rootView.findViewById(R.id.recyclerView);
         snackBarView = rootView.findViewById(R.id.ef_snackbar);
     }
@@ -305,7 +307,7 @@ public class ImagePickerFragment extends Fragment implements ImagePickerView {
                 preferences.setPermissionRequested(permission);
                 requestPermissions(permissions, RC_PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE);
             } else {
-                snackBarView.show(R.string.ef_msg_no_write_external_permission, v -> openAppSettings());
+                snackBarView.show(StringUtils.getINSTANCE().getMsgNoWriteExternalPermission(getContext()), v -> openAppSettings());
             }
         }
     }
@@ -332,10 +334,10 @@ public class ImagePickerFragment extends Fragment implements ImagePickerView {
             } else {
                 if (isCameraOnly) {
                     Toast.makeText(getActivity().getApplicationContext(),
-                            getString(R.string.ef_msg_no_camera_permission), Toast.LENGTH_SHORT).show();
+                            StringUtils.getINSTANCE().getMsgNoCameraPermission(getContext()), Toast.LENGTH_SHORT).show();
                     interactionListener.cancel();
                 } else {
-                    snackBarView.show(R.string.ef_msg_no_camera_permission, v -> openAppSettings());
+                    snackBarView.show(StringUtils.getINSTANCE().getMsgNoCameraPermission(getContext()), v -> openAppSettings());
                 }
             }
         }

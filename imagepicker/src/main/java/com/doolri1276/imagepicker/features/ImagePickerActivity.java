@@ -20,6 +20,7 @@ import com.doolri1276.imagepicker.features.cameraonly.CameraOnlyConfig;
 import com.doolri1276.imagepicker.helper.ConfigUtils;
 import com.doolri1276.imagepicker.helper.IpLogger;
 import com.doolri1276.imagepicker.helper.LocaleManager;
+import com.doolri1276.imagepicker.helper.StringUtils;
 import com.doolri1276.imagepicker.helper.ViewUtils;
 import com.doolri1276.imagepicker.model.Folder;
 import com.doolri1276.imagepicker.model.Image;
@@ -87,6 +88,8 @@ public class ImagePickerActivity extends AppCompatActivity implements ImagePicke
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        if(menu.size()>0)
+            menu.getItem(0).setTitle(StringUtils.getINSTANCE().getCamera(getApplicationContext()));
         getMenuInflater().inflate(R.menu.ef_image_picker_menu_main, menu);
         return true;
     }

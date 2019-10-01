@@ -10,6 +10,8 @@ import com.doolri1276.imagepicker.features.imageloader.ImageLoader;
 import com.doolri1276.imagepicker.helper.ConfigUtils;
 import com.doolri1276.imagepicker.helper.IpLogger;
 import com.doolri1276.imagepicker.helper.LocaleManager;
+import com.doolri1276.imagepicker.helper.StringUtils;
+import com.doolri1276.imagepicker.listeners.OnLimitReachedListener;
 import com.doolri1276.imagepicker.model.Image;
 
 import java.io.File;
@@ -113,6 +115,11 @@ public abstract class ImagePicker {
         return this;
     }
 
+    public ImagePicker setLimitAction(OnLimitReachedListener limitAction) {
+        config.setLimitAction(limitAction);
+        return this;
+    }
+
     public ImagePicker showCamera(boolean show) {
         config.setShowCamera(show);
         return this;
@@ -120,6 +127,23 @@ public abstract class ImagePicker {
 
     public ImagePicker toolbarArrowColor(@ColorInt int color) {
         config.setArrowColor(color);
+        return this;
+    }
+
+    //// text /////
+
+    public ImagePicker toolbarOkButtonText(String text) {
+        StringUtils.getINSTANCE().setOk(text);
+        return this;
+    }
+
+    public ImagePicker toolbarDoneButtonText(String text) {
+        config.setDoneButtonText(text);
+        return this;
+    }
+
+    public ImagePicker toolbarCameraButtonText(String text) {
+        StringUtils.getINSTANCE().setCamera(text);
         return this;
     }
 
@@ -133,10 +157,62 @@ public abstract class ImagePicker {
         return this;
     }
 
-    public ImagePicker toolbarDoneButtonText(String text) {
-        config.setDoneButtonText(text);
+    public ImagePicker setTitlePermissionDenied(String title) {
+        StringUtils.getINSTANCE().setTitlePermissionDenied(title);
         return this;
     }
+
+    public ImagePicker setSelected(String text) {
+        StringUtils.getINSTANCE().setSelected(text);
+        return this;
+    }
+
+    public ImagePicker setSelectedWithLimit(String text) {
+        StringUtils.getINSTANCE().setSelectedWithLimit(text);
+        return this;
+    }
+
+    public ImagePicker setErrorCreateImageFile(String text) {
+        StringUtils.getINSTANCE().setErrorCreateImageFile(text);
+        return this;
+    }
+
+    public ImagePicker setErrorNoCamera(String text) {
+        StringUtils.getINSTANCE().setErrorNoCamera(text);
+        return this;
+    }
+
+    public ImagePicker setErrorNullCursor(String text) {
+        StringUtils.getINSTANCE().setErrorNullCursor(text);
+        return this;
+    }
+
+    public ImagePicker setMsgEmptyImages(String text) {
+        StringUtils.getINSTANCE().setMsgEmptyImages(text);
+        return this;
+    }
+
+    public ImagePicker setMsgNoWriteExternalPermission(String text) {
+        StringUtils.getINSTANCE().setMsgNoWriteExternalPermission(text);
+        return this;
+    }
+
+    public ImagePicker setMsgNoCameraPermission(String text) {
+        StringUtils.getINSTANCE().setMsgNoCameraPermission(text);
+        return this;
+    }
+
+    public ImagePicker setMsgLimitImages(String text) {
+        StringUtils.getINSTANCE().setMsgLimitImages(text, false);
+        return this;
+    }
+
+    public ImagePicker setMsgLimitImages(String text, boolean sizeFirst) {
+        StringUtils.getINSTANCE().setMsgLimitImages(text, sizeFirst);
+        return this;
+    }
+
+    //// text /////
 
     public ImagePicker origin(ArrayList<Image> images) {
         config.setSelectedImages(images);

@@ -12,6 +12,7 @@ import com.doolri1276.imagepicker.adapter.ImagePickerAdapter;
 import com.doolri1276.imagepicker.features.ImagePickerConfig;
 import com.doolri1276.imagepicker.features.ReturnMode;
 import com.doolri1276.imagepicker.features.imageloader.ImageLoader;
+import com.doolri1276.imagepicker.helper.StringUtils;
 import com.doolri1276.imagepicker.view.GridSpacingItemDecoration;
 import com.doolri1276.imagepicker.helper.ConfigUtils;
 import com.doolri1276.imagepicker.helper.ImagePickerUtils;
@@ -134,8 +135,8 @@ public class RecyclerViewManager {
             return ConfigUtils.getImageTitle(context, config);
         }
         return config.getLimit() == MAX_LIMIT
-                ? String.format(context.getString(R.string.ef_selected), imageSize)
-                : String.format(context.getString(R.string.ef_selected_with_limit), imageSize, config.getLimit());
+                ? StringUtils.getINSTANCE().getSelected(context, imageSize)
+                : StringUtils.getINSTANCE().getSelectedWithLimit(context, imageSize, config.getLimit());
     }
 
     public void setImageAdapter(List<Image> images) {
@@ -178,7 +179,11 @@ public class RecyclerViewManager {
     public boolean selectImage(boolean isSelected) {
         if (config.getMode() == MODE_MULTIPLE) {
             if (imageAdapter.getSelectedImages().size() >= config.getLimit() && !isSelected) {
-                Toast.makeText(context, R.string.ef_msg_limit_images, Toast.LENGTH_SHORT).show();
+                if(config.getLimitReachedListener() != null){
+                    config.getLimitReachedListener().limitActionPerformed(imageAdapter.getSelectedImages().size(), config.getLimit());
+                }else {
+                    Toast.makeText(context, StringUtils.getINSTANCE().getMsgLimitImages(context, imageAdapter.getSelectedImages().size(), config.getLimit()), Toast.LENGTH_SHORT).show();
+                }
                 return false;
             }
         } else if (config.getMode() == MODE_SINGLE) {

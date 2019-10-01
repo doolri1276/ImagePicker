@@ -12,6 +12,7 @@ import com.doolri1276.imagepicker.features.common.BaseConfig;
 import com.doolri1276.imagepicker.features.common.BasePresenter;
 import com.doolri1276.imagepicker.features.common.ImageLoaderListener;
 import com.doolri1276.imagepicker.helper.ConfigUtils;
+import com.doolri1276.imagepicker.helper.StringUtils;
 import com.doolri1276.imagepicker.model.Folder;
 import com.doolri1276.imagepicker.model.Image;
 
@@ -103,7 +104,7 @@ class ImagePickerPresenter extends BasePresenter<ImagePickerView> {
         Context context = fragment.getActivity().getApplicationContext();
         Intent intent = getCameraModule().getCameraIntent(fragment.getActivity(), config);
         if (intent == null) {
-            Toast.makeText(context, context.getString(R.string.ef_error_create_image_file), Toast.LENGTH_LONG).show();
+            Toast.makeText(context, StringUtils.getINSTANCE().getErrorCreateImageFile(context), Toast.LENGTH_LONG).show();
             return;
         }
         fragment.startActivityForResult(intent, requestCode);

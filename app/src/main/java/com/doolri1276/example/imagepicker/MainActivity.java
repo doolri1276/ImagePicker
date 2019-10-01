@@ -87,7 +87,8 @@ public class MainActivity extends AppCompatActivity {
                 .includeVideo(includeVideo) // include video (false by default)
                 .onlyVideo(onlyVideo) // include video (false by default)
                 .toolbarArrowColor(Color.RED) // set toolbar arrow up color
-                .msgLimitImagesText("초과해따 초과초과");
+                .setMsgEmptyImages("초과해따 초과초과")
+                .setMsgLimitImages("%d까지만 입력 가능합니다하아아아아아앙 ");
                 //.toolbarFolderTitle("msg11") // folder selection title
                 //.toolbarImageTitle("msg22") // image selection title
                 //.toolbarDoneButtonText("msg33"); // done button text

@@ -6,6 +6,7 @@ import android.provider.MediaStore;
 import android.widget.Toast;
 
 import com.doolri1276.imagepicker.R;
+import com.doolri1276.imagepicker.helper.StringUtils;
 
 public class CameraHelper {
     public static boolean checkCameraAvailability(Context context) {
@@ -15,7 +16,7 @@ public class CameraHelper {
         if (!isAvailable) {
             Context appContext = context.getApplicationContext();
             Toast.makeText(appContext,
-                    appContext.getString(R.string.ef_error_no_camera), Toast.LENGTH_LONG).show();
+                    StringUtils.getINSTANCE().getErrorNoCamera(appContext), Toast.LENGTH_LONG).show();
         }
         return isAvailable;
     }

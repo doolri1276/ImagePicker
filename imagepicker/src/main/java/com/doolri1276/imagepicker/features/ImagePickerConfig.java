@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import com.doolri1276.imagepicker.features.common.BaseConfig;
 import com.doolri1276.imagepicker.features.imageloader.ImageLoader;
+import com.doolri1276.imagepicker.listeners.OnLimitReachedListener;
 import com.doolri1276.imagepicker.model.Image;
 
 import java.io.File;
@@ -36,6 +37,8 @@ public class ImagePickerConfig extends BaseConfig implements Parcelable {
 
     private ImageLoader imageLoader;
 
+    private OnLimitReachedListener limitReachedListener;
+
     private transient String language;
 
     public ImagePickerConfig() {
@@ -63,6 +66,14 @@ public class ImagePickerConfig extends BaseConfig implements Parcelable {
 
     public void setLimit(int limit) {
         this.limit = limit;
+    }
+
+    public OnLimitReachedListener getLimitReachedListener() {
+        return limitReachedListener;
+    }
+
+    public void setLimitAction(OnLimitReachedListener limitAction) {
+        limitReachedListener = limitAction;
     }
 
     public boolean isShowCamera() {

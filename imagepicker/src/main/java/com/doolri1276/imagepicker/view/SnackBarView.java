@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.doolri1276.imagepicker.R;
 import com.doolri1276.imagepicker.features.ImagePickerConfig;
 import com.doolri1276.imagepicker.helper.ConfigUtils;
+import com.doolri1276.imagepicker.helper.StringUtils;
 
 import androidx.annotation.StringRes;
 import androidx.core.view.ViewCompat;
@@ -39,7 +40,7 @@ public class SnackBarView extends RelativeLayout {
     }
 
     private void init() {
-        View.inflate(getContext(), R.layout.ef_imagepikcer_snackbar, this);
+        View.inflate(getContext(), R.layout.ef_imagepicker_snackbar, this);
         if (isInEditMode()) {
             return;
         }
@@ -58,12 +59,19 @@ public class SnackBarView extends RelativeLayout {
         txtCaption.setText(textResId);
     }
 
+    public void setText(String text) {
+        txtCaption.setText(text);
+    }
+
     public void setOnActionClickListener(@StringRes int textId, final OnClickListener onClickListener) {
+        String okText;
         if (textId == 0) {
-            textId = R.string.ef_ok;
+            okText = StringUtils.getINSTANCE().getOk(getContext());
+            btnAction.setText(okText);
+        }else{
+            btnAction.setText(textId);
         }
 
-        btnAction.setText(textId);
         btnAction.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(final View v) {
@@ -79,6 +87,17 @@ public class SnackBarView extends RelativeLayout {
 
     public void show(@StringRes int textResId, OnClickListener onClickListener) {
         setText(textResId);
+        setOnActionClickListener(0, onClickListener);
+
+        ViewCompat.animate(this)
+                .translationY(0f)
+                .setDuration(ANIM_DURATION)
+                .setInterpolator(INTERPOLATOR)
+                .alpha(1f);
+    }
+
+    public void show(String text, OnClickListener onClickListener) {
+        setText(text);
         setOnActionClickListener(0, onClickListener);
 
         ViewCompat.animate(this)
