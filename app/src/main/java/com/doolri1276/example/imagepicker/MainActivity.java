@@ -1,8 +1,10 @@
 package com.doolri1276.example.imagepicker;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Observable;
@@ -94,8 +96,12 @@ public class MainActivity extends AppCompatActivity {
                 .setMsgLimitImages("%d까지만 입력 가능합니다하아아아아아앙 ")
                 .setLimitAction(new OnLimitReachedListener() {
                     @Override
-                    public void limitActionPerformed(int imageSize, int limit) {
-                        Toast.makeText(MainActivity.this, limit+"까지 넣을 수 있는데에" + imageSize+"까지 넣으면 나는 어떡해애", Toast.LENGTH_SHORT).show();
+                    public void limitActionPerformed(Context context, int imageSize, int limit) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                        builder.setMessage(limit+"까지 넣을 수 있는데에" + imageSize+"까지 넣으면 나는 어떡해애");
+                        builder.setPositiveButton("확인", null).create().show();
+
+//                        Toast.makeText(context, limit+"까지 넣을 수 있는데에" + imageSize+"까지 넣으면 나는 어떡해애", Toast.LENGTH_SHORT).show();
                     }
                 });
                 //.toolbarFolderTitle("msg11") // folder selection title

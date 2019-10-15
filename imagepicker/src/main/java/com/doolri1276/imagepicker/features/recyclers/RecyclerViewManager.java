@@ -181,7 +181,7 @@ public class RecyclerViewManager {
         if (config.getMode() == MODE_MULTIPLE) {
             if (imageAdapter.getSelectedImages().size() >= config.getLimit() && !isSelected) {
                 if(ImagePickerActionUtils.getInstance().getLimitReachedListener() != null){
-                    ImagePickerActionUtils.getInstance().getLimitReachedListener().limitActionPerformed(imageAdapter.getSelectedImages().size(), config.getLimit());
+                    ImagePickerActionUtils.getInstance().getLimitReachedListener().limitActionPerformed(context, imageAdapter.getSelectedImages().size(), config.getLimit());
                 }else {
                     Toast.makeText(context, StringUtils.getINSTANCE().getMsgLimitImages(context, imageAdapter.getSelectedImages().size(), config.getLimit()), Toast.LENGTH_SHORT).show();
                 }

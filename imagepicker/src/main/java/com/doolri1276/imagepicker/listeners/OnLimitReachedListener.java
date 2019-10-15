@@ -1,5 +1,7 @@
 package com.doolri1276.imagepicker.listeners;
 
+import android.content.Context;
+
 public interface OnLimitReachedListener {
-    void limitActionPerformed(int imageSize, int limit);
+    void limitActionPerformed(Context context, int imageSize, int limit);
 }

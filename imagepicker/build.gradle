@@ -58,7 +58,7 @@ dependencies {
 
 apply plugin: 'com.github.dcendents.android-maven'
 group='com.github.doolri1276'
-version='0.0.2'
+version='0.0.3'
 
 repositories {
     mavenCentral()
