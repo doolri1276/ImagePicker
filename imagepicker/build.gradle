@@ -56,9 +56,9 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
 }
 
-apply plugin: 'com.github.decendents.android-maven'
+apply plugin: 'com.github.dcendents.android-maven'
 group='com.github.doolri1276'
-version='0.0.1'
+version='0.0.2'
 
 repositories {
     mavenCentral()
