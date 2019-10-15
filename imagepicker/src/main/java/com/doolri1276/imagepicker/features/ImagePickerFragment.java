@@ -505,6 +505,10 @@ public class ImagePickerFragment extends Fragment implements ImagePickerView {
         return recyclerViewManager.isShowDoneButton();
     }
 
+    public boolean isShowCameraButton(ImagePickerConfig config) {
+        return recyclerViewManager.isShowCameraButton(config);
+    }
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);

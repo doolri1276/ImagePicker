@@ -87,7 +87,7 @@ public class CustomUIActivity extends AppCompatActivity {
         MenuItem menuCamera = menu.findItem(com.doolri1276.imagepicker.R.id.menu_camera);
         if (menuCamera != null) {
             if (config != null) {
-                menuCamera.setVisible(config.isShowCamera());
+                menuCamera.setVisible(imagePickerFragment.isShowCameraButton(config));
             }
         }
 

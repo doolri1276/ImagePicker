@@ -201,5 +201,11 @@ public class RecyclerViewManager {
                 && (config.getReturnMode() != ReturnMode.ALL && config.getReturnMode() != ReturnMode.GALLERY_ONLY);
     }
 
+    public boolean isShowCameraButton(ImagePickerConfig config) {
+        return config.getReturnMode() != ReturnMode.WHEN_CAMERA
+                ? config.isShowCamera()
+                : (!isDisplayingFolderView() && imageAdapter.getSelectedImages().isEmpty() && config.isShowCamera());
+    }
+
 }
 

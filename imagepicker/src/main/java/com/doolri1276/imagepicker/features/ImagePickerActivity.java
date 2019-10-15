@@ -99,7 +99,7 @@ public class ImagePickerActivity extends AppCompatActivity implements ImagePicke
         MenuItem menuCamera = menu.findItem(R.id.menu_camera);
         if (menuCamera != null) {
             if (config != null) {
-                menuCamera.setVisible(config.isShowCamera());
+                menuCamera.setVisible(imagePickerFragment.isShowCameraButton(config));
             }
         }
 
