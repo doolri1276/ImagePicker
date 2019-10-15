@@ -82,9 +82,10 @@ public class MainActivity extends AppCompatActivity {
         ImagePicker imagePicker = ImagePicker.create(this)
                 .language("ko") // Set image picker language
                 .theme(R.style.ImagePickerTheme)
-                .returnMode(returnAfterCapture
-                        ? ReturnMode.ALL
-                        : ReturnMode.NONE) // set whether pick action or camera action should return immediate result or not. Only works in single mode for image picker
+//                .returnMode(returnAfterCapture
+//                        ? ReturnMode.ALL
+//                        : ReturnMode.NONE) // set whether pick action or camera action should return immediate result or not. Only works in single mode for image picker
+                .returnMode(ReturnMode.WHEN_CAMERA)
                 .folderMode(folderMode) // set folder mode (false by default)
                 .includeVideo(includeVideo) // include video (false by default)
                 .onlyVideo(onlyVideo) // include video (false by default)

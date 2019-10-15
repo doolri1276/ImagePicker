@@ -33,8 +33,11 @@ public class ConfigUtils {
 
     public static boolean shouldReturn(BaseConfig config, boolean isCamera) {
         ReturnMode mode = config.getReturnMode();
+
+        Log.d("TAGG", "ConfigUtils, shouldReturn들어왔다 : " + mode.name() + ", isCamera : " + isCamera);
+
         if (isCamera) {
-            return mode == ReturnMode.ALL || mode == ReturnMode.CAMERA_ONLY;
+            return mode == ReturnMode.ALL || mode == ReturnMode.CAMERA_ONLY || mode == ReturnMode.WHEN_CAMERA;
         } else {
             return mode == ReturnMode.ALL || mode == ReturnMode.GALLERY_ONLY;
         }

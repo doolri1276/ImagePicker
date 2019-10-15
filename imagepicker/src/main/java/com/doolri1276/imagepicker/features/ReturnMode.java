@@ -11,5 +11,6 @@ public enum ReturnMode {
     NONE,
     ALL,
     CAMERA_ONLY,
-    GALLERY_ONLY
+    GALLERY_ONLY,
+    WHEN_CAMERA
 }
