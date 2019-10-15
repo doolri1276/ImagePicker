@@ -8,6 +8,7 @@ import android.util.Log;
 import com.doolri1276.imagepicker.features.cameraonly.ImagePickerCameraOnly;
 import com.doolri1276.imagepicker.features.imageloader.ImageLoader;
 import com.doolri1276.imagepicker.helper.ConfigUtils;
+import com.doolri1276.imagepicker.helper.ImagePickerActionUtils;
 import com.doolri1276.imagepicker.helper.IpLogger;
 import com.doolri1276.imagepicker.helper.LocaleManager;
 import com.doolri1276.imagepicker.helper.StringUtils;
@@ -76,6 +77,7 @@ public abstract class ImagePicker {
     /* --------------------------------------------------- */
 
     public void init() {
+        ImagePickerActionUtils.init();
         config = ImagePickerConfigFactory.createDefault();
     }
 
@@ -116,7 +118,7 @@ public abstract class ImagePicker {
     }
 
     public ImagePicker setLimitAction(OnLimitReachedListener limitAction) {
-        config.setLimitAction(limitAction);
+        ImagePickerActionUtils.getInstance().setLimitAction(limitAction);
         return this;
     }
 

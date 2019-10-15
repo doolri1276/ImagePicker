@@ -11,11 +11,13 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.doolri1276.imagepicker.features.ImagePicker;
 import com.doolri1276.imagepicker.features.ImagePickerConfig;
 import com.doolri1276.imagepicker.features.IpCons;
 import com.doolri1276.imagepicker.features.ReturnMode;
+import com.doolri1276.imagepicker.listeners.OnLimitReachedListener;
 import com.doolri1276.imagepicker.model.Image;
 
 import java.util.ArrayList;
@@ -88,7 +90,13 @@ public class MainActivity extends AppCompatActivity {
                 .onlyVideo(onlyVideo) // include video (false by default)
                 .toolbarArrowColor(Color.RED) // set toolbar arrow up color
                 .setMsgEmptyImages("초과해따 초과초과")
-                .setMsgLimitImages("%d까지만 입력 가능합니다하아아아아아앙 ");
+                .setMsgLimitImages("%d까지만 입력 가능합니다하아아아아아앙 ")
+                .setLimitAction(new OnLimitReachedListener() {
+                    @Override
+                    public void limitActionPerformed(int imageSize, int limit) {
+                        Toast.makeText(MainActivity.this, limit+"까지 넣을 수 있는데에" + imageSize+"까지 넣으면 나는 어떡해애", Toast.LENGTH_SHORT).show();
+                    }
+                });
                 //.toolbarFolderTitle("msg11") // folder selection title
                 //.toolbarImageTitle("msg22") // image selection title
                 //.toolbarDoneButtonText("msg33"); // done button text

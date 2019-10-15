@@ -12,6 +12,7 @@ import com.doolri1276.imagepicker.adapter.ImagePickerAdapter;
 import com.doolri1276.imagepicker.features.ImagePickerConfig;
 import com.doolri1276.imagepicker.features.ReturnMode;
 import com.doolri1276.imagepicker.features.imageloader.ImageLoader;
+import com.doolri1276.imagepicker.helper.ImagePickerActionUtils;
 import com.doolri1276.imagepicker.helper.StringUtils;
 import com.doolri1276.imagepicker.view.GridSpacingItemDecoration;
 import com.doolri1276.imagepicker.helper.ConfigUtils;
@@ -179,8 +180,8 @@ public class RecyclerViewManager {
     public boolean selectImage(boolean isSelected) {
         if (config.getMode() == MODE_MULTIPLE) {
             if (imageAdapter.getSelectedImages().size() >= config.getLimit() && !isSelected) {
-                if(config.getLimitReachedListener() != null){
-                    config.getLimitReachedListener().limitActionPerformed(imageAdapter.getSelectedImages().size(), config.getLimit());
+                if(ImagePickerActionUtils.getInstance().getLimitReachedListener() != null){
+                    ImagePickerActionUtils.getInstance().getLimitReachedListener().limitActionPerformed(imageAdapter.getSelectedImages().size(), config.getLimit());
                 }else {
                     Toast.makeText(context, StringUtils.getINSTANCE().getMsgLimitImages(context, imageAdapter.getSelectedImages().size(), config.getLimit()), Toast.LENGTH_SHORT).show();
                 }
